@@ -34,39 +34,6 @@ function Graph(options) {
         context.closePath();
         context.stroke();
     };
-    this.osY = function(color,width){ // отрисовка линий по Y
-        context.strokeStyle = color || "red"; 
-        context.lineWidth = width || 2;
-        for(var i = WIN.BOTTOM; i < WIN.HEIGHT; i++){
-            context.beginPath();
-            context.moveTo(xs(i), ys(WIN.BOTTOM));
-            context.lineTo(xs(i), ys(WIN.HEIGHT));
-            context.closePath();
-            context.stroke();
-        }
-    }
 
-    this.osX = function(color,width){ // отрисовка линий по X
-        context.strokeStyle = color || "red";
-        context.lineWidth = width || 2;
-        for(var i = WIN.LEFT; i < WIN.HEIGHT; i++){
-            context.beginPath();
-            context.moveTo(ys(WIN.LEFT), xs(i));
-            context.lineTo(ys(WIN.HEIGHT), xs(i));
-            context.closePath();
-            context.stroke();
-        }
-    }
 
-    this.oc = function(color,width){ //отрисовка оси
-        context.beginPath();
-        context.strokeStyle = color || "red";
-        context.lineWidth = width || 2;
-        context.moveTo(xs(WIN.LEFT), ys(0));
-        context.lineTo(xs(WIN.WIDTH), ys(0));
-        context.moveTo(xs(0), ys(WIN.BOTTOM));
-        context.lineTo(xs(0), ys(WIN.HEIGHT));
-        context.closePath();
-        context.stroke();
-    }
 }
