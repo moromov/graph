@@ -33,37 +33,32 @@ window.onload = function() {
         }
     }
 
-    function renderCosinusioda(f, color, width){
-       var x = WIN.LEFT;
-        var dx = WIN.WIDTH / 1000;
-        while(x < WIN.WIDTH + WIN.LEFT) {
-            graph.line(x, cosinusioda(x), x + dx, cosinusioda(x + dx), color, width);
-            x += dx;
+    function renderOXY(){
+        for (x = 0; x < WIN.WIDTH + WIN.LEFT; x++) { //от 0 до х+
+            graph.line(x, WIN.BOTTOM, x,  WIN.HEIGHT + WIN.BOTTOM, 'grey', 1) //ось y
         }
+        
+        for (x = 0; x > WIN.LEFT; x--) {
+            graph.line(x, WIN.BOTTOM, x,  WIN.HEIGHT + WIN.BOTTOM, 'grey', 1); //ось y
+        }
+        
+        for (x = 0; x > WIN.BOTTOM; x--) { 
+            graph.line(WIN.LEFT, x, WIN.WIDTH + WIN.LEFT, x, 'grey', 1);
+        }
+
+        for (x = 0; x < WIN.HEIGHT + WIN.BOTTOM; x++) { 
+            graph.line(WIN.LEFT, x, WIN.WIDTH + WIN.LEFT, x, 'grey', 1);
+        }
+
+        graph.line(WIN.LEFT, 0, WIN.WIDTH + WIN.LEFT, 0, 'black') //ось х
+        graph.line(0, WIN.BOTTOM, 0, WIN.HEIGHT + WIN.BOTTOM, 'black') //ось y
     }
-    function renderTg(f, color, width){
-        var x = WIN.LEFT;
-         var dx = WIN.WIDTH / 1000;
-         while(x < WIN.WIDTH + WIN.LEFT) {
-             graph.line(x, tg(x), x + dx, tg(x + dx), color, width);
-             x += dx;
-         }
-     }
+    
 
-     function renderCot(f, color, width){
-        var x = WIN.LEFT;
-         var dx = WIN.WIDTH / 1000;
-         while(x < WIN.WIDTH + WIN.LEFT) {
-             graph.line(x, tg(x), x + dx, tg(x + dx), color, width);
-             x += dx;
-         }
-     }
+    
 
-    renderTg(tg,'orange',3);
-    renderCot(cot,'pink',3);
-    renderCosinusioda(cosinusioda,'blue',3);
+    renderOXY();
     renderFunction(f, 'green', 3);
-    graph.osY('gray',1);
-    graph.osX('gray',1);
-    graph.oc('black',2);
+    renderFunction(g);
+
 };
